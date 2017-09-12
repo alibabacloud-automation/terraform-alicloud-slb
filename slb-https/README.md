@@ -67,7 +67,7 @@ You can use this in your terraform template with the following steps.
 1. Adding a module resource to your template, e.g. main.tf
 
        module "tf-slb" {
-          source = "github.com/terraform-community-modules/terraform-alicloud-slb/slb_https"
+          source = "github.com/terraform-community-modules/terraform-alicloud-slb/slb-https"
 
           alicloud_access_key = "${var.alicloud_access_key}"
           alicloud_secret_key = "${var.alicloud_secret_key}"
