@@ -56,21 +56,22 @@ You can use this in your terraform template with the following steps.
 
 1. Adding a module resource to your template, e.g. main.tf
 
-       module "tf-slb" {
-          source = "github.com/terraform-community-modules/terraform-alicloud-slb/slb-udp"
 
-          alicloud_access_key = "${var.alicloud_access_key}"
-          alicloud_secret_key = "${var.alicloud_secret_key}"
-          region = "${var.region}"
+         module "tf-slb" {
+            source = "github.com/alibaba/terraform-alicloud-slb/slb-udp"
 
-          vswitch_id = "${var.vswitch_id"
+            alicloud_access_key = "${var.alicloud_access_key}"
+            alicloud_secret_key = "${var.alicloud_secret_key}"
+            region = "${var.region}"
 
-          slb_name = "${var.slb_name}"
-          backend_port = "${var.backend_port}"
-          front_port = "${var.front_port}"
-          listener_bandwidth = "${var.listener_bandwidth}"
+            vswitch_id = "${var.vswitch_id"
 
-        }
+            slb_name = "${var.slb_name}"
+            backend_port = "${var.backend_port}"
+            front_port = "${var.front_port}"
+            listener_bandwidth = "${var.listener_bandwidth}"
+
+         }
 
 2. Setting values for the following variables, either through terraform.tfvars or environment variables or -var arguments on the CLI
 
