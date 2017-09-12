@@ -6,7 +6,7 @@ A terraform module which contains a number of configurations of Alicloud SLB.
 
 - The module provider four listeners to the SLB instance.
 - You can launch a new SLB in a VPC and Classic.
-- If you without VPC or VSwitch, you can create a new one by the module [tf_alicloud_vpc]()
+- If you without VPC or VSwitch, you can create a new one by the module [terraform-alicloud-vpc](https://github.com/alibaba/terraform-alicloud-vpc)
 
 
 SLB Catalog
@@ -30,12 +30,12 @@ This module contains the following SLB templates for you to use as modules in se
   - Listener always turn on health check
 
 
-`Notes~`
-1. These templates default to intranet but can be made internet by setting the is_internet variable to true
-2. These templates default to "paybytraffic" and have a default bandwidth 1
-3. If you the intranet, internet charge type does not support "paybybandwidth"
-4. If you want to launch a new SLB in a VPC, the network type must be intranet that is is_internet = false
-5. Each template has a default SLB instance name
+`NOTES~`
+* These templates default to intranet but can be made internet by setting the is_internet variable to true
+* These templates default to "paybytraffic" and have a default bandwidth 1
+* If you the intranet, internet charge type does not support "paybybandwidth"
+* If you want to launch a new SLB in a VPC, the network type must be intranet that is is_internet = false
+* Each template has a default SLB instance name
 
 
 
