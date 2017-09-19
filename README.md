@@ -46,3 +46,9 @@ Usage
 Authors
 -------
 Created and maintained by He Guimin(@xiaozhu heguimin36@163.com)
+
+Reference
+---------
+* [Terraform-Provider-Alicloud Github](https://github.com/alibaba/terraform-provider)
+* [Terraform-Provider-Alicloud Release](https://github.com/alibaba/terraform-provider/releases)
+* [Terraform-Provider-Alicloud Latest Docs](http://47.95.33.19:4567/docs/providers/alicloud/)
