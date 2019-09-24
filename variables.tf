@@ -1,3 +1,8 @@
+variable "region" {
+  description = "The region used to launch this module resources."
+  default     = ""
+}
+
 # VSwitch variables
 variable "vswitch_id" {
   description = "The vswitch id used to launch load balancer."
