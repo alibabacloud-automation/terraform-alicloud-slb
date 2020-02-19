@@ -29,13 +29,12 @@ module "slb" {
   servers_of_default_server_group = [
     {
       server_ids = "i-bp1xxxxxxxxxx1,i-bp1xxxxxxxxxx2"
-      weight     = "100"
+      weight     = "90"
       type       = "ecs"
     },
+    // Using default value
     {
       server_ids = "i-bp1xxxxxxxxxx3"
-      weight     = "80"
-      type       = "ecs"
     }
   ]
   #############################
@@ -45,15 +44,14 @@ module "slb" {
     {
       server_ids  = "i-bp1xxxxxxxxxx1"
       port        = "80"
-      weight      = '100'
+      weight      = "90"
       type        = "ecs"
       server_type = "Master"
     },
+    // Using default value
     {
       server_ids  = "i-bp1xxxxxxxxxx2"
       port        = "80"
-      weight      = "100"
-      type        = "ecs"
       server_type = "Slave"
     }
   ]
@@ -64,14 +62,11 @@ module "slb" {
     {
       server_ids = "i-bp1xxxxxxxxxx1,i-bp1xxxxxxxxxx2"
       port       = "80"
-      weight     = "100"
-      type       = "ecs"
     },
     {
-      server_ids = "i-bp1xxxxxxxxxx3"
+      server_ids = "eni-bp1xxxxxxxxxx3"
       port       = "8080"
-      weight     = "100"
-      type       = "ecs"
+      type       = "eni"
     }
   ]
 }
@@ -80,9 +75,9 @@ module "slb" {
 
 ## 示例
 
-* [默认服务器挂载示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-default-server-group)
-* [主备服务器组挂载示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-master-slave-server-group)
-* [虚拟服务器组挂载示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-virtual-server-group)
+* [挂载到默认服务器组示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-default-server-group)
+* [挂载到主备服务器组示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-master-slave-server-group)
+* [挂载到虚拟服务器组示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-virtual-server-group)
 
 ## 注意事项
 

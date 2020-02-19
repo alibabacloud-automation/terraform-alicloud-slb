@@ -88,7 +88,7 @@ resource "alicloud_slb_server_group" "this" {
       server_ids = split(",", lookup(servers.value, "server_ids"))
       port       = lookup(servers.value, "port")
       weight     = lookup(servers.value, "weight", 100)
-      type       = lookup(servers.value, "type", null)
+      type       = lookup(servers.value, "type", "ecs")
     }
   }
 }

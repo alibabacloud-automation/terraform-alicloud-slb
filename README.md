@@ -31,13 +31,12 @@ module "slb" {
   servers_of_default_server_group = [
     {
       server_ids = "i-bp1xxxxxxxxxx1,i-bp1xxxxxxxxxx2"
-      weight     = "100"
+      weight     = "90"
       type       = "ecs"
     },
+    // Using default value
     {
       server_ids = "i-bp1xxxxxxxxxx3"
-      weight     = "80"
-      type       = "ecs"
     }
   ]
   #############################
@@ -47,15 +46,14 @@ module "slb" {
     {
       server_ids  = "i-bp1xxxxxxxxxx1"
       port        = "80"
-      weight      = '100'
+      weight      = "90"
       type        = "ecs"
       server_type = "Master"
     },
+    // Using default value
     {
       server_ids  = "i-bp1xxxxxxxxxx2"
       port        = "80"
-      weight      = "100"
-      type        = "ecs"
       server_type = "Slave"
     }
   ]
@@ -66,14 +64,11 @@ module "slb" {
     {
       server_ids = "i-bp1xxxxxxxxxx1,i-bp1xxxxxxxxxx2"
       port       = "80"
-      weight     = "100"
-      type       = "ecs"
     },
     {
-      server_ids = "i-bp1xxxxxxxxxx3"
+      server_ids = "eni-bp1xxxxxxxxxx3"
       port       = "8080"
-      weight     = "100"
-      type       = "ecs"
+      type       = "eni"
     }
   ]
 }
