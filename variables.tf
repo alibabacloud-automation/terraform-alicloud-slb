@@ -99,19 +99,19 @@ variable "slave_zone_id" {
 # Load Balancer Instance attachment
 
 variable "servers_of_default_server_group" {
-  description = "A list of attached ECS instances, it's supports fields 'server_ids', 'weight', and 'type'."
+  description = "A list of attached ECS instances, it's supports fields 'server_ids', 'weight'(default to 100), and 'type'(default to 'ecs')."
   type        = list(map(string))
   default     = []
 }
 
 variable "servers_of_master_slave_server_group" {
-  description = "A list of master slave servers, it's supports fields 'server_ids', 'weight', 'port', 'server_type' and 'type'."
+  description = "A list of master slave servers, it's supports fields 'server_ids', 'weight'(default to 100), 'port', 'server_type' and 'type'(default to 'ecs')."
   type        = list(map(string))
   default     = []
 }
 
 variable "servers_of_virtual_server_group" {
-  description = "A list of virtual servers, it's supports fields 'server_ids', 'weight', 'port' and 'type'."
+  description = "A list of virtual servers, it's supports fields 'server_ids', 'weight'(default to 100), 'port' and 'type'(default to 'ecs')."
   type        = list(map(string))
   default     = []
 }
