@@ -1,4 +1,9 @@
 ## 1.4.0 (Unreleased)
+
+IMPROVEMENTS:
+
+- add more output parameters [GH-15](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/pull/14)
+
 ## 1.3.0 (Feburary 19， 2020)
 
 IMPROVEMENTS:
