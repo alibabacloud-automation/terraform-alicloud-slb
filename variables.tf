@@ -104,14 +104,26 @@ variable "servers_of_default_server_group" {
   default     = []
 }
 
+variable "master_slave_server_group_name" {
+  description = "The name master slave server group. If not set, the 'name' and adding suffix '-master-slave' will return."
+  type        = string
+  default     = ""
+}
+
 variable "servers_of_master_slave_server_group" {
-  description = "A list of master slave servers, it's supports fields 'server_ids', 'weight'(default to 100), 'port', 'server_type' and 'type'(default to 'ecs')."
+  description = "A list of servers attaching to master-slave server group, it's supports fields 'server_ids', 'weight'(default to 100), 'port', 'server_type' and 'type'(default to 'ecs')."
   type        = list(map(string))
   default     = []
 }
 
+variable "virtual_server_group_name" {
+  description = "The name virtual server group. If not set, the 'name' and adding suffix '-virtual' will return."
+  type        = string
+  default     = ""
+}
+
 variable "servers_of_virtual_server_group" {
-  description = "A list of virtual servers, it's supports fields 'server_ids', 'weight'(default to 100), 'port' and 'type'(default to 'ecs')."
+  description = "A list of servers attaching to virtual server group, it's supports fields 'server_ids', 'weight'(default to 100), 'port' and 'type'(default to 'ecs')."
   type        = list(map(string))
   default     = []
 }

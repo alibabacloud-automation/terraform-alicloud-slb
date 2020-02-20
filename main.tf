@@ -6,8 +6,13 @@ provider "alicloud" {
   configuration_source    = "terraform-alicloud-modules/slb"
 }
 
+locals {
+  create        = var.use_existing_slb ? false : var.create
+  create_others = var.use_existing_slb || var.create ? true : false
+  this_slb_id   = var.use_existing_slb ? var.existing_slb_id : var.create ? concat(alicloud_slb.this.*.id, [""])[0] : ""
+}
 resource "alicloud_slb" "this" {
-  count                = var.create == true ? 1 : 0
+  count                = local.create ? 1 : 0
   name                 = var.name
   internet_charge_type = var.internet_charge_type
   address_type         = var.internal == false ? "internet" : "intranet"
@@ -34,8 +39,8 @@ locals {
 }
 
 resource "alicloud_slb_backend_server" "this" {
-  count            = ! var.create && ! var.use_existing_slb || length(var.servers_of_default_server_group) == 0 ? 0 : 1
-  load_balancer_id = var.existing_slb_id != "" ? var.existing_slb_id : concat(alicloud_slb.this.*.id, [""])[0]
+  count            = local.create_others && length(var.servers_of_default_server_group) > 0 ? 1 : 0
+  load_balancer_id = local.this_slb_id
   dynamic "backend_servers" {
     for_each = local.servers_of_default_server_group
     content {
@@ -63,9 +68,9 @@ locals {
 }
 
 resource "alicloud_slb_master_slave_server_group" "this" {
-  count            = ! var.create && ! var.use_existing_slb || length(var.servers_of_master_slave_server_group) == 0 ? 0 : 1
-  load_balancer_id = var.existing_slb_id != "" ? var.existing_slb_id : concat(alicloud_slb.this.*.id, [""])[0]
-  name             = "${var.name}-master-slave"
+  count            = local.create_others && length(var.servers_of_master_slave_server_group) > 0 ? 1 : 0
+  load_balancer_id = local.this_slb_id
+  name             = var.master_slave_server_group_name != "" ? var.master_slave_server_group_name : "${var.name}-master-slave"
   dynamic "servers" {
     for_each = local.servers_of_master_slave_server_group
     content {
@@ -79,9 +84,9 @@ resource "alicloud_slb_master_slave_server_group" "this" {
 }
 
 resource "alicloud_slb_server_group" "this" {
-  count            = ! var.create && ! var.use_existing_slb || length(var.servers_of_virtual_server_group) == 0 ? 0 : 1
-  load_balancer_id = var.existing_slb_id != "" ? var.existing_slb_id : concat(alicloud_slb.this.*.id, [""])[0]
-  name             = "${var.name}-virtual"
+  count            = local.create_others && length(var.servers_of_virtual_server_group) > 0 ? 1 : 0
+  load_balancer_id = local.this_slb_id
+  name             = var.virtual_server_group_name != "" ? var.virtual_server_group_name : "${var.name}-virtual"
   dynamic "servers" {
     for_each = var.servers_of_virtual_server_group
     content {

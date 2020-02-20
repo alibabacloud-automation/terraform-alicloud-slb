@@ -38,8 +38,10 @@ resource "alicloud_vswitch" "default" {
 
 // ECS Module
 module "ecs_instance" {
-  source                      = "alibaba/ecs-instance/alicloud//modules/x86-architecture-general-purpose"
-  region                      = var.region
+  source              = "alibaba/ecs-instance/alicloud//modules/x86-architecture-general-purpose"
+  region              = var.region
+  number_of_instances = 2
+
   instance_type_family        = "ecs.g6"
   vswitch_id                  = length(data.alicloud_vswitches.default.ids) > 0 ? data.alicloud_vswitches.default.ids.0 : concat(alicloud_vswitch.default.*.id, [""])[0]
   security_group_ids          = data.alicloud_security_groups.default.ids
@@ -53,7 +55,7 @@ module "slb" {
   region = var.region
   servers_of_default_server_group = [
     {
-      server_ids = concat(module.ecs_instance.this_instance_id, [""])[0]
+      server_ids = join(",", module.ecs_instance.this_instance_id)
       weight     = "100"
       type       = "ecs"
     },
