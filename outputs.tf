@@ -75,6 +75,11 @@ output "this_slb_master_slave_server_group_name" {
   value       = concat(alicloud_slb_master_slave_server_group.this.*.name, [""])[0]
 }
 
+output "this_slb_master_slave_server_group_id" {
+  description = "The ID of master slave server group."
+  value       = concat(alicloud_slb_master_slave_server_group.this.*.id, [""])[0]
+}
+
 output "this_slb_virtual_servers" {
   description = "List of servers attached to virtual server group."
   value       = concat(alicloud_slb_server_group.this.*.servers, [[]])[0]
@@ -83,4 +88,9 @@ output "this_slb_virtual_servers" {
 output "this_slb_virtual_server_group_name" {
   description = "The name of virtual server group"
   value       = concat(alicloud_slb_server_group.this.*.name, [""])[0]
+}
+
+output "this_slb_virtual_server_group_id" {
+  description = "The ID of virtual server group"
+  value       = concat(alicloud_slb_server_group.this.*.id, [""])[0]
 }

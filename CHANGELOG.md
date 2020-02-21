@@ -1,4 +1,9 @@
 ## 1.5.0 (Unreleased)
+
+IMPROVEMENTS:
+
+- added outputs server group id and name. [GH-16](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/pull/16)
+
 ## 1.4.0 (Feburary 20， 2020)
 
 IMPROVEMENTS:
