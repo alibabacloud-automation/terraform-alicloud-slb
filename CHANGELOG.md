@@ -1,4 +1,10 @@
 ## 1.7.0 (Unreleased)
+## 1.6.1 (February 24, 2020)
+
+IMPROVEMENTS:
+
+- add profile for readme and example [GH-19](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/pull/19)
+
 ## 1.6.0 (February 24, 2020)
 
 IMPROVEMENTS:
