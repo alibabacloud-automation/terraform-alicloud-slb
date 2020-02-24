@@ -1,7 +1,9 @@
-## 1.6.0 (Unreleased)
+## 1.7.0 (Unreleased)
+## 1.6.0 (February 24, 2020)
 
 IMPROVEMENTS:
 
+- improve(slb): modify the source url in readme.md [GH-18](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/pull/18)
 - change variable `internal` to `address_type`. [GH-17](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/pull/17)
 
 
