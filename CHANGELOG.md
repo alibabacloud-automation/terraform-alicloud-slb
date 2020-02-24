@@ -1,4 +1,10 @@
 ## 1.6.0 (Unreleased)
+
+IMPROVEMENTS:
+
+- change variable `internal` to `address_type`. [GH-17](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/pull/17)
+
+
 ## 1.5.0 (February 21, 2020)
 
 IMPROVEMENTS:

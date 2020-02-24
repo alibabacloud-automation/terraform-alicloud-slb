@@ -55,9 +55,15 @@ variable "name" {
 }
 
 variable "internal" {
-  description = "If true, SLB instance will be an internal SLB."
+  description = "(Deprecated) It has been deprecated from 1.6.0 and 'address_type' instead. If true, SLB instance will be an internal SLB."
   type        = bool
   default     = false
+}
+
+variable "address_type" {
+  description = "The type of address. Choices are 'intranet' and 'internet'. Default to 'internet'."
+  type        = string
+  default     = "internet"
 }
 
 variable "internet_charge_type" {
