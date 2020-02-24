@@ -20,7 +20,7 @@ terraform-alicloud-slb
 
 ```hcl
 module "slb" {
-  source = "alibaba/terraform-alicloud-slb/alicloud/"
+  source = "alibaba/slb/alicloud"
   region = var.region
   
   ########################
