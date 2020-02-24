@@ -1,3 +1,6 @@
+variable "profile" {
+  default = "default"
+}
 variable "region" {
   default = "cn-hangzhou"
 }
@@ -6,7 +9,8 @@ variable "zone_id" {
 }
 
 provider "alicloud" {
-  region = var.region
+  region  = var.region
+  profile = var.profile
 }
 
 #############################################################
@@ -39,6 +43,7 @@ resource "alicloud_vswitch" "default" {
 // ECS Module
 module "ecs_instance" {
   source              = "alibaba/ecs-instance/alicloud//modules/x86-architecture-general-purpose"
+  profile             = var.profile
   region              = var.region
   number_of_instances = 2
 
@@ -51,8 +56,9 @@ module "ecs_instance" {
 
 // Slb Module
 module "slb" {
-  source = "../../"
-  region = var.region
+  source  = "../../"
+  region  = var.region
+  profile = var.profile
   servers_of_default_server_group = [
     {
       server_ids = join(",", module.ecs_instance.this_instance_id)

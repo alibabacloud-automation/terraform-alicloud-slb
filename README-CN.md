@@ -20,8 +20,9 @@ terraform-alicloud-slb
 
 ```hcl
 module "slb" {
-  source = "alibaba/slb/alicloud"
-  region = var.region
+  source  = "alibaba/slb/alicloud"
+  region  = "cn-beijing"
+  profile = "Your-Profile-Name"
   
   ########################
   #attach backend servers#

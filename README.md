@@ -22,8 +22,9 @@ The Module requires Terraform 0.12 and Terraform Provider AliCloud 1.56.0+.
 
 ```hcl
 module "slb" {
-  source = "alibaba/slb/alicloud"
-  region = var.region
+  source  = "alibaba/slb/alicloud"
+  region  = "cn-beijing"
+  profile = "Your-Profile-Name"
   
   ########################
   #attach backend servers#
