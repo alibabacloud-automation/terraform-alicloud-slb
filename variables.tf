@@ -81,7 +81,7 @@ variable "bandwidth" {
 variable "spec" {
   description = "The specification of the SLB instance."
   type        = string
-  default     = ""
+  default     = "slb.s1.small"
 }
 
 variable "tags" {
