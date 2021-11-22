@@ -76,7 +76,7 @@ module "slb" {
 * [Servers within virtual server group example](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-virtual-server-group)
 
 ## Notes
-From the version v1.7.1, the module has removed the following `provider` setting:
+From the version v1.7.0, the module has removed the following `provider` setting:
 
 ```hcl
 provider "alicloud" {
@@ -111,7 +111,7 @@ module "slb" {
 }
 ```
 
-If you want to upgrade the module to 1.7.1 or higher in-place, you can define a provider which same region with
+If you want to upgrade the module to 1.7.0 or higher in-place, you can define a provider which same region with
 previous region:
 
 ```hcl
@@ -175,7 +175,7 @@ If you have any problems when using this module, please opening a [provider issu
 
 Authors
 -------
-Created and maintained by Wang li(@Lexsss, 13718193219@163.com) and He Guimin(@xiaozhu36, heguimin36@163.com)
+Created and maintained by Alibaba Cloud Terraform Team(terraform@alibabacloud.com)
 
 License
 ----

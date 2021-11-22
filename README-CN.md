@@ -76,7 +76,7 @@ module "slb" {
 * [挂载到虚拟服务器组示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-virtual-server-group)
 
 ## 注意事项
-本Module从版本v1.7.1开始已经移除掉如下的 provider 的显示设置：
+本Module从版本v1.7.0开始已经移除掉如下的 provider 的显示设置：
 
 ```hcl
 provider "alicloud" {
@@ -111,7 +111,7 @@ module "slb" {
 }
 ```
 
-如果你想对正在使用中的Module升级到 1.7.1 或者更高的版本，那么你可以在模板中显示定义一个系统过Region的provider：
+如果你想对正在使用中的Module升级到 1.7.0 或者更高的版本，那么你可以在模板中显示定义一个系统过Region的provider：
 ```hcl
 provider "alicloud" {
   region  = "cn-beijing"
@@ -180,7 +180,7 @@ module "slb" {
 
 作者
 -------
-Created and maintained by Wang li(@Lexsss, 13718193219@163.com) and He Guimin(@xiaozhu36, heguimin36@163.com)
+Created and maintained by Alibaba Cloud Terraform Team(terraform@alibabacloud.com)
 
 许可
 ----
