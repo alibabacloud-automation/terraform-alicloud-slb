@@ -1,4 +1,10 @@
-## 1.7.0 (Unreleased)
+## 1.8.0 (Unreleased)
+## 1.7.0 (December 5, 2021)
+
+ENHANCEMENTS:
+
+- Removes the provider setting and improves the Readme [GH-23](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/pull/23)
+
 ## 1.6.1 (February 24, 2020)
 
 IMPROVEMENTS:
