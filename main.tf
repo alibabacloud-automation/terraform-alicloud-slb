@@ -1,11 +1,3 @@
-provider "alicloud" {
-  profile                 = var.profile != "" ? var.profile : null
-  shared_credentials_file = var.shared_credentials_file != "" ? var.shared_credentials_file : null
-  region                  = var.region != "" ? var.region : null
-  skip_region_validation  = var.skip_region_validation
-  configuration_source    = "terraform-alicloud-modules/slb"
-}
-
 locals {
   create        = var.use_existing_slb ? false : var.create
   create_others = var.use_existing_slb || var.create ? true : false
