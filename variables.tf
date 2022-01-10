@@ -51,7 +51,7 @@ variable "create" {
 variable "name" {
   description = "The name of a new load balancer."
   type        = string
-  default     = "tf-module-slb"
+  default     = ""
 }
 
 variable "internal" {

@@ -46,7 +46,6 @@ module "ecs_instance" {
   profile             = var.profile
   region              = var.region
   number_of_instances = 2
-
   instance_type_family        = "ecs.g6"
   vswitch_id                  = length(data.alicloud_vswitches.default.ids) > 0 ? data.alicloud_vswitches.default.ids.0 : concat(alicloud_vswitch.default.*.id, [""])[0]
   security_group_ids          = data.alicloud_security_groups.default.ids
