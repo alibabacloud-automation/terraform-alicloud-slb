@@ -38,10 +38,12 @@ output "this_slb_vpc_id" {
   description = "The vpc id of the SLB belongs"
   value       = local.this_slb_vpc_id
 }
+
 output "this_slb_vswitch_id" {
   description = "The vpc id of the SLB belongs"
   value       = local.this_slb_vswitch_id
 }
+
 output "this_slb_address" {
   description = "The IP address of the SLB"
   value       = local.this_slb_address
@@ -51,10 +53,12 @@ output "this_slb_tags" {
   description = "The tags of the SLB"
   value       = local.this_slb_tags
 }
+
 output "this_slb_master_availability_zone" {
   description = "The master availability zone of the SLB belongs"
   value       = local.this_slb_master_availability_zone
 }
+
 output "this_slb_slave_availability_zone" {
   description = "The slave availability zone of the SLB belongs"
   value       = local.this_slb_slave_availability_zone

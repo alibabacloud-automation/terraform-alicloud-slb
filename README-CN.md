@@ -11,8 +11,6 @@ terraform-alicloud-slb
 * [Slb_Master_Slave_Server_Group](https://www.terraform.io/docs/providers/alicloud/r/slb_master_slave_server_group.html)
 * [Slb_Server_Group](https://www.terraform.io/docs/providers/alicloud/r/slb_server_group.html)
 
-
-
 ## 用法
 
 ```hcl
@@ -76,7 +74,7 @@ module "slb" {
 * [挂载到虚拟服务器组示例](https://github.com/terraform-alicloud-modules/terraform-alicloud-slb/tree/master/examples/servers-within-virtual-server-group)
 
 ## 注意事项
-本Module从版本v1.7.0开始已经移除掉如下的 provider 的显示设置：
+本Module从版本v1.7.0开始已经移除掉如下的 provider 的显式设置：
 
 ```hcl
 provider "alicloud" {
@@ -111,7 +109,7 @@ module "slb" {
 }
 ```
 
-如果你想对正在使用中的Module升级到 1.7.0 或者更高的版本，那么你可以在模板中显示定义一个系统过Region的provider：
+如果你想对正在使用中的Module升级到 1.7.0 或者更高的版本，那么你可以在模板中显式定义一个相同Region的provider：
 ```hcl
 provider "alicloud" {
   region  = "cn-beijing"
@@ -133,7 +131,7 @@ module "slb" {
   // ...
 }
 ```
-或者，如果你是多Region部署，你可以利用 `alias` 定义多个 provider，并在Module中显示指定这个provider：
+或者，如果你是多Region部署，你可以利用 `alias` 定义多个 provider，并在Module中显式指定这个provider：
 
 ```hcl
 provider "alicloud" {
@@ -169,7 +167,7 @@ module "slb" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
 | <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | >= 1.56.0 |
 
 提交问题

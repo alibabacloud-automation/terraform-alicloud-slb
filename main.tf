@@ -4,17 +4,18 @@ locals {
   this_slb_id   = var.use_existing_slb ? var.existing_slb_id : var.create ? concat(alicloud_slb.this.*.id, [""])[0] : ""
   address_type  = var.address_type != "" ? var.address_type : var.internal == false ? "internet" : "intranet"
 }
+
 resource "alicloud_slb" "this" {
   count                = local.create ? 1 : 0
-  name                 = var.name
+  load_balancer_name   = var.name
   internet_charge_type = var.internet_charge_type
   address_type         = local.address_type
   vswitch_id           = var.vswitch_id
-  specification        = var.spec == "" ? null : var.spec
+  load_balancer_spec   = var.spec == "" ? null : var.spec
   bandwidth            = var.bandwidth
-  tags                 = var.tags
   master_zone_id       = var.master_zone_id == "" ? null : var.master_zone_id
   slave_zone_id        = var.slave_zone_id == "" ? null : var.slave_zone_id
+  tags                 = var.tags
 }
 
 locals {
@@ -90,4 +91,3 @@ resource "alicloud_slb_server_group" "this" {
     }
   }
 }
-
