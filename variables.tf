@@ -21,14 +21,18 @@ variable "skip_region_validation" {
   default     = false
 }
 
-# VSwitch variables
-variable "vswitch_id" {
-  description = "The vswitch id used to launch load balancer."
-  type        = string
-  default     = ""
+variable "internal" {
+  description = "(Deprecated) It has been deprecated from 1.6.0 and 'address_type' instead. If true, SLB instance will be an internal SLB."
+  type        = bool
+  default     = false
 }
 
 # Load Balancer Instance variables
+variable "create" {
+  description = "Whether to create load balancer instance. If setting 'use_existing_slb = true' and 'existing_slb_id', it will be ignored."
+  type        = bool
+  default     = true
+}
 
 variable "use_existing_slb" {
   description = "Whether to use an existing load balancer instance. If true, 'existing_slb_id' should not be empty. Also, you can create a new one by setting 'create = true'."
@@ -42,28 +46,10 @@ variable "existing_slb_id" {
   default     = ""
 }
 
-variable "create" {
-  description = "Whether to create load balancer instance. If setting 'use_existing_slb = true' and 'existing_slb_id', it will be ignored."
-  type        = bool
-  default     = true
-}
-
 variable "name" {
   description = "The name of a new load balancer."
   type        = string
-  default     = "tf-module-slb"
-}
-
-variable "internal" {
-  description = "(Deprecated) It has been deprecated from 1.6.0 and 'address_type' instead. If true, SLB instance will be an internal SLB."
-  type        = bool
-  default     = false
-}
-
-variable "address_type" {
-  description = "The type of address. Choices are 'intranet' and 'internet'. Default to 'internet'."
-  type        = string
-  default     = "internet"
+  default     = ""
 }
 
 variable "internet_charge_type" {
@@ -72,10 +58,16 @@ variable "internet_charge_type" {
   default     = "PayByTraffic"
 }
 
-variable "bandwidth" {
-  description = "The load balancer instance bandwidth."
-  type        = number
-  default     = 10
+variable "address_type" {
+  description = "The type of address. Choices are 'intranet' and 'internet'. Default to 'internet'."
+  type        = string
+  default     = "internet"
+}
+
+variable "vswitch_id" {
+  description = "The vswitch id used to launch load balancer."
+  type        = string
+  default     = ""
 }
 
 variable "spec" {
@@ -84,10 +76,10 @@ variable "spec" {
   default     = "slb.s1.small"
 }
 
-variable "tags" {
-  description = "A mapping of tags to assign to the resource."
-  type        = map(string)
-  default     = {}
+variable "bandwidth" {
+  description = "The load balancer instance bandwidth."
+  type        = number
+  default     = 10
 }
 
 variable "master_zone_id" {
@@ -102,8 +94,13 @@ variable "slave_zone_id" {
   default     = ""
 }
 
-# Load Balancer Instance attachment
+variable "tags" {
+  description = "A mapping of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
+}
 
+# Load Balancer Instance attachment
 variable "servers_of_default_server_group" {
   description = "A list of attached ECS instances, it's supports fields 'server_ids', 'weight'(default to 100), and 'type'(default to 'ecs')."
   type        = list(map(string))
