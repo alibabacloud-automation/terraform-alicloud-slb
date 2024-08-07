@@ -18,11 +18,6 @@ output "this_slb_backend_servers" {
   value       = module.slb.this_slb_backend_servers
 }
 
-output "this_slb_master_slave_servers" {
-  description = "List of slb master slave servers"
-  value       = module.slb.this_slb_master_slave_servers
-}
-
 output "this_slb_master_slave_server_group_id" {
   description = "The ID of master slave server group."
   value       = module.slb.this_slb_master_slave_server_group_id
