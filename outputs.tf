@@ -1,13 +1,13 @@
 locals {
-  this_slb_name                     = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.name, [""])[0]
-  this_slb_network_type             = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.network_type, [""])[0]
-  this_slb_status                   = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.status, [""])[0]
-  this_slb_vpc_id                   = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.vpc_id, [""])[0]
-  this_slb_vswitch_id               = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.vswitch_id, [""])[0]
-  this_slb_address                  = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.address, [""])[0]
-  this_slb_tags                     = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.network_type, [{}])[0]
-  this_slb_slave_availability_zone  = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.slave_availability_zone, [""])[0]
-  this_slb_master_availability_zone = local.this_slb_id == "" ? "" : concat(data.alicloud_slbs.this.slbs.*.master_availability_zone, [""])[0]
+  this_slb_name                     = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.load_balancer_name, [""])[0]) : (var.create ? alicloud_slb.this.*.load_balancer_name[0] : "")
+  this_slb_network_type             = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.network_type, [""])[0]) : ""
+  this_slb_status                   = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.status, [""])[0]) : (var.create ? alicloud_slb.this.*.status[0] : "")
+  this_slb_vpc_id                   = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.vpc_id, [""])[0]) : ""
+  this_slb_vswitch_id               = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.vswitch_id, [""])[0]) : (var.create ? alicloud_slb.this.*.vswitch_id[0] : "")
+  this_slb_address                  = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.address, [""])[0]) : (var.create ? alicloud_slb.this.*.address[0] : "")
+  this_slb_tags                     = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.tags, [""])[0]) : (var.create ? alicloud_slb.this.*.tags[0] : {})
+  this_slb_slave_availability_zone  = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.slave_zone_id, [""])[0]) : (var.create ? alicloud_slb.this.*.slave_zone_id[0] : "")
+  this_slb_master_availability_zone = var.use_existing_slb ? (concat(data.alicloud_slbs.this.balancers.*.master_zone_id, [""])[0]) : (var.create ? alicloud_slb.this.*.master_zone_id[0] : "")
 }
 
 data "alicloud_slbs" "this" {
@@ -97,4 +97,43 @@ output "this_slb_virtual_server_group_name" {
 output "this_slb_virtual_server_group_id" {
   description = "The ID of virtual server group"
   value       = concat(alicloud_slb_server_group.this.*.id, [""])[0]
+}
+
+# access control list
+output "this_slb_acl_id" {
+  value = module.acl[*].this_slb_acl_id
+}
+
+output "this_slb_acl_name" {
+  value = module.acl[*].this_slb_acl_name
+}
+
+output "this_slb_acl_ip_version" {
+  value = module.acl[*].this_slb_acl_ip_version
+}
+
+output "this_slb_acl_entry_attachment" {
+  value = module.acl[*].this_slb_acl_entry_attachment
+}
+
+# slb listener
+output "this_slb_listener_ids" {
+  description = "The id of slb listeners"
+  value       = module.listener[*].this_slb_listener_id
+}
+
+
+output "this_slb_listener_frontend_port" {
+  description = "The frontend_port of slb listener"
+  value       = module.listener[*].this_slb_listener_frontend_port
+}
+
+
+# slb rule
+output "this_rule_id" {
+  value = module.rule[*].this_rule_id
+}
+
+output "this_rule_name" {
+  value = module.rule[*].this_rule_id
 }
