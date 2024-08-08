@@ -1,4 +1,8 @@
-## 1.8.0 (Unreleased)
+## 2.1.0 (Unreleased)
+## 2.0.0 (August 08, 2024)
+
+- Module/support creation of acl, listener and rule; examples: improve the examples. [GH-25](https://github.com/alibabacloud-automation/terraform-alicloud-slb/pull/25)
+
 ## 1.7.0 (December 5, 2021)
 
 ENHANCEMENTS:
