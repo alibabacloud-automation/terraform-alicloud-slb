@@ -15,11 +15,11 @@ variable "slb_server_group_id" {
 variable "listeners" {
   description = "List of slb listeners. Each item can set all or part fields of alicloud_slb_listener resource."
   type = object({
-    frontend_port   = number
-    protocol        = string
-    backend_port    = optional(number, null)
-    bandwidth       = optional(number, "-1")
-    scheduler       = optional(string, "wrr")
+    frontend_port = number
+    protocol      = string
+    backend_port  = optional(number, null)
+    bandwidth     = optional(number, "-1")
+    scheduler     = optional(string, "wrr")
   })
   default = {
     frontend_port = null

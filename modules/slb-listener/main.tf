@@ -9,7 +9,7 @@ resource "alicloud_slb_listener" "this" {
   bandwidth     = var.listeners.bandwidth
   scheduler     = var.listeners.scheduler
 
-  // Health Check
+  # Health Check
   health_check              = var.health_check_config.health_check
   healthy_threshold         = var.health_check_config.healthy_threshold
   unhealthy_threshold       = var.health_check_config.unhealthy_threshold
@@ -23,7 +23,7 @@ resource "alicloud_slb_listener" "this" {
   health_check_method       = var.health_check_config.health_check_method
 
 
-  // Advance setting
+  # Advance setting
   sticky_session      = var.advanced_setting.sticky_session
   sticky_session_type = var.advanced_setting.sticky_session_type
   cookie              = var.advanced_setting.cookie
@@ -37,14 +37,14 @@ resource "alicloud_slb_listener" "this" {
   idle_timeout        = var.advanced_setting.idle_timeout
   request_timeout     = var.advanced_setting.request_timeout
 
-  // x_forwarded_for setting
+  # x_forwarded_for setting
   x_forwarded_for {
     retrive_slb_ip    = var.x_forwarded_for_config.retrive_slb_ip
     retrive_slb_id    = var.x_forwarded_for_config.retrive_slb_id
     retrive_slb_proto = var.x_forwarded_for_config.retrive_slb_proto
   }
 
-  // Ssl certificate setting
+  # Ssl certificate setting
   server_certificate_id = var.ssl_certificates_config.server_certificate_id
   tls_cipher_policy     = var.ssl_certificates_config.tls_cipher_policy
   enable_http2          = var.ssl_certificates_config.enable_http2

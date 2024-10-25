@@ -194,3 +194,12 @@ variable "rule_config" {
   }))
   default = []
 }
+
+
+
+# Deprecated Attributes
+variable "internal" {
+  description = "(Deprecated) It has been deprecated from 1.6.0 and 'address_type' instead. If true, SLB instance will be an internal SLB."
+  type        = bool
+  default     = false
+}
