@@ -19,8 +19,8 @@ resource "alicloud_slb_server_group" "default" {
 module "example" {
   source = "../.."
 
-  create          = false
-  
+  create = false
+
   create_slb_rule = true
   rule_config = [{
     load_balancer_id          = module.slb.this_slb_id

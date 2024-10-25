@@ -1,4 +1,4 @@
-// Output the ID of the slb and new slb listener created
+# Output the ID of the slb and new slb listener created
 output "this_slb_listener_id" {
   description = "The id of slb listener"
   value       = alicloud_slb_listener.this.id

@@ -1,5 +1,7 @@
 variable "acl_name" {
-  default = "tf-example-module-slb-acl"
+  default     = "tf-example-module-slb-acl"
+  description = "The name of the access control list."
+  type        = string
 }
 
 variable "acl_ip_version" {
@@ -9,6 +11,11 @@ variable "acl_ip_version" {
 }
 
 variable "acl_entry_list" {
+  description = "The list of acl entry."
+  type = list(object({
+    entry   = string
+    comment = optional(string, null)
+  }))
   default = [
     {
       entry   = "10.10.10.0/24"
