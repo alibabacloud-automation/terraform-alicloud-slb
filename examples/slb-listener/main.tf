@@ -11,7 +11,8 @@ data "alicloud_images" "default" {
 }
 
 data "alicloud_instance_types" "default" {
-  availability_zone = data.alicloud_zones.default.zones[0].id
+  availability_zone    = data.alicloud_zones.default.zones[0].id
+  instance_type_family = "ecs.c6"
 }
 
 resource "alicloud_slb_acl" "default" {
