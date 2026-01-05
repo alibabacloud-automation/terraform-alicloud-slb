@@ -1,3 +1,7 @@
+provider "alicloud" {
+  region = "cn-zhangjiakou"
+}
+
 #############################################################
 # create VPC, vswitch and security group
 #############################################################
@@ -22,13 +26,16 @@ module "security_group" {
 data "alicloud_zones" "default" {
 }
 
-data "alicloud_images" "default" {
-  name_regex = "^centos_6"
-}
-
 data "alicloud_instance_types" "default" {
   availability_zone    = data.alicloud_zones.default.zones[0].id
-  instance_type_family = "ecs.c6"
+  cpu_core_count       = 2
+  memory_size          = 8
+  instance_type_family = "ecs.g9i"
+}
+
+data "alicloud_images" "default" {
+  most_recent   = true
+  instance_type = data.alicloud_instance_types.default.instance_types[0].id
 }
 
 # ECS Module
@@ -36,22 +43,24 @@ module "ecs-instance-master" {
   source  = "alibaba/ecs-instance/alicloud"
   version = "~> 2.0"
 
-  number_of_instances = 1
-  instance_type       = data.alicloud_instance_types.default.instance_types[0].id
-  image_id            = data.alicloud_images.default.images[0].id
-  vswitch_ids         = alicloud_vswitch.default[*].id
-  security_group_ids  = [module.security_group.this_security_group_id]
+  number_of_instances  = 1
+  instance_type        = data.alicloud_instance_types.default.instance_types[0].id
+  image_id             = data.alicloud_images.default.images[0].id
+  system_disk_category = "cloud_essd"
+  vswitch_ids          = alicloud_vswitch.default[*].id
+  security_group_ids   = [module.security_group.this_security_group_id]
 }
 
 module "ecs-instance-slave" {
   source  = "alibaba/ecs-instance/alicloud"
   version = "~> 2.0"
 
-  number_of_instances = 1
-  instance_type       = data.alicloud_instance_types.default.instance_types[0].id
-  image_id            = data.alicloud_images.default.images[0].id
-  vswitch_ids         = alicloud_vswitch.default[*].id
-  security_group_ids  = [module.security_group.this_security_group_id]
+  number_of_instances  = 1
+  instance_type        = data.alicloud_instance_types.default.instance_types[0].id
+  image_id             = data.alicloud_images.default.images[0].id
+  system_disk_category = "cloud_essd"
+  vswitch_ids          = alicloud_vswitch.default[*].id
+  security_group_ids   = [module.security_group.this_security_group_id]
 }
 
 # Slb Module

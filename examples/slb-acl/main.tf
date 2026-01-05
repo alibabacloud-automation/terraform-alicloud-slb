@@ -1,3 +1,7 @@
+provider "alicloud" {
+  region = "cn-zhangjiakou"
+}
+
 module "acl" {
   source = "../.."
 
