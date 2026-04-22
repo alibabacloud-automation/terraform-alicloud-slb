@@ -37,7 +37,7 @@ resource "alicloud_slb_server_certificate" "default" {
 
 module "vpc" {
   source  = "alibaba/vpc/alicloud"
-  version = "~> 1.0"
+  version = "2.0.0"
 
   create             = true
   vpc_cidr           = "172.16.0.0/12"
@@ -47,7 +47,7 @@ module "vpc" {
 
 module "security_group" {
   source  = "alibaba/security-group/alicloud"
-  version = "~> 2.0"
+  version = "3.0.0"
 
   vpc_id = module.vpc.this_vpc_id
 }
@@ -55,7 +55,7 @@ module "security_group" {
 # ECS Module
 module "ecs_instance" {
   source  = "alibaba/ecs-instance/alicloud"
-  version = "~> 2.0"
+  version = "3.0.0"
 
   number_of_instances         = 1
   instance_type               = data.alicloud_instance_types.default.instance_types[0].id

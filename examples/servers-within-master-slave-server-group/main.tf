@@ -18,7 +18,7 @@ resource "alicloud_vswitch" "default" {
 
 module "security_group" {
   source  = "alibaba/security-group/alicloud"
-  version = "~> 2.0"
+  version = "3.0.0"
 
   vpc_id = alicloud_vpc.default.id
 }
@@ -41,7 +41,7 @@ data "alicloud_images" "default" {
 # ECS Module
 module "ecs-instance-master" {
   source  = "alibaba/ecs-instance/alicloud"
-  version = "~> 2.0"
+  version = "3.0.0"
 
   number_of_instances  = 1
   instance_type        = data.alicloud_instance_types.default.instance_types[0].id
@@ -53,7 +53,7 @@ module "ecs-instance-master" {
 
 module "ecs-instance-slave" {
   source  = "alibaba/ecs-instance/alicloud"
-  version = "~> 2.0"
+  version = "3.0.0"
 
   number_of_instances  = 1
   instance_type        = data.alicloud_instance_types.default.instance_types[0].id
