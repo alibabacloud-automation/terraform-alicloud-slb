@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/alibabacloud-automation/terraform-alicloud-slb/compare/v3.0.0...v3.0.1) (2026-04-22)
+
+
+### Bug Fixes
+
+* update version of the dependency module ([c211be4](https://github.com/alibabacloud-automation/terraform-alicloud-slb/commit/c211be40ee2595a444b4102dc13fb38df69b7d6b))
+
 ## [3.0.0](https://github.com/alibabacloud-automation/terraform-alicloud-slb/compare/v2.1.0...v3.0.0) (2026-04-22)
 
 
