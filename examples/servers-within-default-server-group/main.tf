@@ -43,7 +43,7 @@ data "alicloud_images" "default" {
 # ECS Module
 module "ecs_instance" {
   source  = "alibaba/ecs-instance/alicloud"
-  version = "3.0.0"
+  version = "4.0.0"
 
   number_of_instances  = 2
   instance_type        = data.alicloud_instance_types.default.instance_types[0].id
