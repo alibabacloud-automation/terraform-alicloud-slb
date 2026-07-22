@@ -15,6 +15,7 @@ data "alicloud_instance_types" "default" {
 
 data "alicloud_images" "default" {
   most_recent   = true
+  owners        = "system"
   instance_type = data.alicloud_instance_types.default.instance_types[0].id
 }
 
